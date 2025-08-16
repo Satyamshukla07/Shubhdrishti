@@ -1,0 +1,84 @@
+"Build a modern, responsive landing website for an entertainment company named SHUBHDHRISHTI ENTERTAINMENT.
+
+Requirements:
+1. Design & Branding
+
+Use a modern, sleek, and professional design with smooth animations and transitions.
+
+Color palette should reflect business strategy:
+
+Primary: Royal Blue / Deep Navy (trust, professionalism).
+
+Secondary: Gold / Amber (luxury, entertainment feel).
+
+Accent: White with gradients for contrast.
+
+Typography: Modern sans-serif (e.g., Poppins, Montserrat, Inter).
+
+Mobile-first responsive design.
+
+2. Website Structure
+
+Header/Navbar: Logo + navigation (Home, About, Services, Portfolio, Contact). Sticky with hover effects.
+
+Hero Section: Full-screen banner with background image/video overlay, bold headline, subheadline, and CTA button.
+
+About Section: Company story, mission, vision with side-by-side text + image.
+
+Services Section: Grid of cards with icons, hover animations, and short descriptions.
+
+Portfolio/Projects Section: Carousel or grid showing past entertainment projects/events with hover animations.
+
+Testimonials Section: Optional slider with client feedback.
+
+Contact Section: Contact form (Name, Email, Message), company details, optional Google Map.
+
+Footer: Quick links, social media icons (Instagram, YouTube, Facebook), copyright line.
+
+3. Features & Tech Stack
+
+Use React + Tailwind CSS (or Next.js for SEO + performance).
+
+Include:
+
+Parallax scrolling.
+
+Hover animations.
+
+Smooth scroll navigation.
+
+SEO meta tags + Open Graph.
+
+Optional: Dark/Light mode toggle.
+
+4. Deployment & Stability
+
+Ensure the project works locally without errors (npm install && npm run dev).
+
+Use a proper production build (npm run build).
+
+Code must be clean, modular, and compatible with GitHub → Render deployment.
+
+Provide a README.md with:
+
+Local setup instructions.
+
+GitHub push workflow.
+
+Render deployment guide.
+
+5. Extra Enhancements (Optional)
+
+Animated counters for company stats (e.g., years of experience, shows hosted).
+
+Testimonials carousel.
+
+Smooth loading animations with Framer Motion.
+
+⚡ The final output should be:
+
+A premium, eye-catching landing website for SHUBHDHRISHTI ENTERTAINMENT.
+
+Responsive on all devices.
+
+Error-free for local development, GitHub repository, and Render hosting."
