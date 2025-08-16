@@ -41,25 +41,28 @@ export default function Header() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled ? "glass-nav backdrop-blur-xl" : "glass-nav backdrop-blur-lg"
     }`}>
-      <div className="container mx-auto container-padding">
-        <div className="flex items-center justify-between h-20 lg:h-24 py-4">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between min-h-[80px] py-4">
           {/* Logo */}
-          <div className="flex items-center flex-1">
-            <div className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold font-inter">
-              <span className="text-royal-blue">SHUBHDHRISHTI</span>
-              <br className="sm:hidden" />
-              <span className="gradient-text ml-1 sm:ml-2">ENTERTAINMENT</span>
+          <div className="flex items-center">
+            <div className="font-bold font-inter leading-tight">
+              <div className="text-base sm:text-lg lg:text-xl xl:text-2xl">
+                <span className="text-royal-blue">SHUBHDHRISHTI</span>
+              </div>
+              <div className="text-sm sm:text-base lg:text-lg xl:text-xl -mt-1">
+                <span className="gradient-text">ENTERTAINMENT</span>
+              </div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           {!isMobile && (
-            <div className="flex items-center space-x-1 lg:space-x-2">
+            <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="nav-link text-gray-700 font-medium font-inter text-sm lg:text-base px-3 lg:px-4 py-2"
+                  className="px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-royal-blue transition-all duration-300 rounded-lg hover:bg-white/10 font-inter"
                 >
                   {link.label}
                 </button>
@@ -68,30 +71,30 @@ export default function Header() {
           )}
 
           {/* Mobile Menu Button */}
-          {isMobile && (
-            <Button
-              variant="ghost"
-              size="icon"
+          <div className="md:hidden">
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-royal-blue glass-button border-0"
+              className="p-2 rounded-lg text-gray-700 hover:text-royal-blue hover:bg-white/10 transition-all duration-300"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMobile && isOpen && (
-          <div className="glass-card mt-4 p-4 space-y-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="block w-full text-left text-gray-700 hover:text-royal-blue font-medium transition-all duration-300 px-4 py-3 rounded-lg hover:bg-white/10"
-              >
-                {link.label}
-              </button>
-            ))}
+        {isOpen && (
+          <div className="md:hidden pb-4">
+            <div className="glass-card mt-2 p-4 rounded-2xl space-y-1">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-royal-blue font-medium transition-all duration-300 rounded-lg hover:bg-white/10 font-inter"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
