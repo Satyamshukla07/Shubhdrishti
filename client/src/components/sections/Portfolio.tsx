@@ -49,30 +49,36 @@ const portfolioItems = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="portfolio" className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 right-1/4 w-96 h-96 gradient-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 gradient-gold rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto container-padding relative z-10">
+        <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-4xl lg:text-5xl font-bold text-deep-navy mb-6 font-poppins"
+            className="text-4xl lg:text-6xl font-bold text-deep-navy mb-8 font-inter heading-primary"
           >
-            Our <span className="text-gold">Portfolio</span>
+            Our <span className="gradient-text">Portfolio</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-poppins leading-relaxed"
           >
             Explore some of our most memorable projects and events that showcase our creativity, expertise, and commitment to excellence.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {portfolioItems.map((item, index) => (
             <motion.div
               key={index}
@@ -80,31 +86,31 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -8 }}
-              className="rounded-2xl overflow-hidden card-hover bg-white group"
+              whileHover={{ y: -12, scale: 1.02 }}
+              className="glass-card overflow-hidden group"
             >
               <div className="relative overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-royal-blue/90 to-gold/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <h4 className="text-2xl font-bold mb-2 font-poppins">{item.title}</h4>
-                    <p className="mb-4">{item.category}</p>
-                    <Button className="bg-white text-royal-blue px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="text-center text-white p-6">
+                    <h4 className="text-2xl lg:text-3xl font-bold mb-3 font-inter heading-secondary">{item.title}</h4>
+                    <p className="mb-6 opacity-90 font-poppins">{item.category}</p>
+                    <Button className="glass-button text-white px-8 py-3 rounded-full font-semibold font-inter">
                       View Details
                     </Button>
                   </div>
                 </div>
               </div>
-              <div className="p-6">
-                <h4 className="text-xl font-bold text-deep-navy mb-2 font-poppins">{item.title}</h4>
-                <p className="text-gray-600 mb-4">{item.description}</p>
+              <div className="p-8">
+                <h4 className="text-xl lg:text-2xl font-bold text-deep-navy mb-3 font-inter heading-secondary">{item.title}</h4>
+                <p className="text-gray-600 mb-6 font-poppins leading-relaxed">{item.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-gold font-semibold">{item.category}</span>
-                  <span className="text-sm text-gray-500">{item.year}</span>
+                  <span className="gradient-text font-bold font-inter">{item.category}</span>
+                  <span className="text-sm text-gray-500 font-poppins">{item.year}</span>
                 </div>
               </div>
             </motion.div>
@@ -116,10 +122,10 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
-          <Button className="btn-primary text-white px-8 py-3 rounded-full font-semibold hover:shadow-xl">
-            <Eye className="mr-2 h-5 w-5" />
+          <Button className="glass-button text-white px-10 py-4 rounded-full font-semibold text-lg font-inter">
+            <Eye className="mr-3 h-6 w-6" />
             View All Projects
           </Button>
         </motion.div>

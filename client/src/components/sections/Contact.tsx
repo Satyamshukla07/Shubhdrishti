@@ -22,8 +22,8 @@ export default function Contact() {
       firstName: "",
       lastName: "",
       email: "",
-      phone: "",
-      eventType: "",
+      phone: undefined,
+      eventType: undefined,
       message: "",
     },
   });
@@ -54,24 +54,30 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="contact" className="section-padding bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/3 left-0 w-96 h-96 gradient-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-0 w-96 h-96 gradient-gold rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto container-padding relative z-10">
+        <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-4xl lg:text-5xl font-bold text-deep-navy mb-6 font-poppins"
+            className="text-4xl lg:text-6xl font-bold text-deep-navy mb-8 font-inter heading-primary"
           >
-            Get In <span className="text-gold">Touch</span>
+            Get In <span className="gradient-text">Touch</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-poppins leading-relaxed"
           >
             Ready to create something extraordinary? Let's discuss your entertainment needs and bring your vision to life.
           </motion.p>
@@ -84,9 +90,9 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-gray-50 p-8 rounded-2xl"
+            className="glass-card p-10"
           >
-            <h3 className="text-2xl font-bold text-deep-navy mb-6 font-poppins">Send Us a Message</h3>
+            <h3 className="text-2xl lg:text-3xl font-bold text-deep-navy mb-8 font-inter heading-secondary">Send Us a Message</h3>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -139,7 +145,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel className="text-sm font-semibold text-gray-700">Phone Number</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder="+91 9876543210" {...field} />
+                        <Input type="tel" placeholder="+91 9876543210" {...field} value={field.value || ""} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -152,7 +158,7 @@ export default function Contact() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm font-semibold text-gray-700">Event Type</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value || ""}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select event type" />
