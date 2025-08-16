@@ -39,26 +39,27 @@ export default function Header() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? "glass-nav" : "glass-nav"
+      isScrolled ? "glass-nav backdrop-blur-xl" : "glass-nav backdrop-blur-lg"
     }`}>
       <div className="container mx-auto container-padding">
-        <div className="flex items-center justify-between h-18 lg:h-24">
+        <div className="flex items-center justify-between h-20 lg:h-24 py-4">
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="text-2xl lg:text-3xl font-bold font-inter heading-primary">
+          <div className="flex items-center flex-1">
+            <div className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold font-inter">
               <span className="text-royal-blue">SHUBHDHRISHTI</span>
-              <span className="gradient-text ml-2">ENTERTAINMENT</span>
+              <br className="sm:hidden" />
+              <span className="gradient-text ml-1 sm:ml-2">ENTERTAINMENT</span>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           {!isMobile && (
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 lg:space-x-2">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="nav-link text-gray-700 font-medium font-inter"
+                  className="nav-link text-gray-700 font-medium font-inter text-sm lg:text-base px-3 lg:px-4 py-2"
                 >
                   {link.label}
                 </button>
