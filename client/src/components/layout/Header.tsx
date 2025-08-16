@@ -14,7 +14,6 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +27,7 @@ export default function Header() {
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 80;
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 100;
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
@@ -38,66 +37,65 @@ export default function Header() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? "glass-nav backdrop-blur-xl" : "glass-nav backdrop-blur-lg"
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+      isScrolled ? "glass-nav shadow-xl" : "glass-nav"
     }`}>
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between min-h-[80px] py-4">
-          {/* Logo */}
-          <div className="flex items-center">
-            <div className="font-bold font-inter leading-tight">
-              <div className="text-base sm:text-lg lg:text-xl xl:text-2xl">
-                <span className="text-royal-blue">SHUBHDHRISHTI</span>
-              </div>
-              <div className="text-sm sm:text-base lg:text-lg xl:text-xl -mt-1">
-                <span className="gradient-text">ENTERTAINMENT</span>
-              </div>
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+          
+          {/* Logo - Always Visible */}
+          <div className="flex items-center flex-shrink-0">
+            <div className="text-left">
+              <h1 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-royal-blue font-inter leading-none">
+                SHUBHDHRISHTI
+              </h1>
+              <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold gradient-text font-inter leading-none -mt-1">
+                ENTERTAINMENT
+              </p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          {!isMobile && (
-            <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-royal-blue transition-all duration-300 rounded-lg hover:bg-white/10 font-inter"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-          )}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            {navLinks.map((link, index) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="relative text-gray-700 hover:text-royal-blue font-medium font-inter transition-all duration-300 px-3 py-2 text-sm xl:text-base"
+              >
+                {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-gold to-amber transition-all duration-300 hover:w-full"></span>
+              </button>
+            ))}
+          </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:text-royal-blue hover:bg-white/10 transition-all duration-300"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-700 hover:text-royal-blue hover:bg-white/10 transition-all duration-300"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4">
-            <div className="glass-card mt-2 p-4 rounded-2xl space-y-1">
+          <div className="lg:hidden border-t border-white/20">
+            <nav className="px-4 sm:px-6 py-4 space-y-2 bg-white/10 backdrop-blur-lg">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-royal-blue font-medium transition-all duration-300 rounded-lg hover:bg-white/10 font-inter"
+                  className="block w-full text-left px-4 py-3 text-gray-700 hover:text-royal-blue hover:bg-white/10 font-medium font-inter transition-all duration-300 rounded-lg"
                 >
                   {link.label}
                 </button>
               ))}
-            </div>
+            </nav>
           </div>
         )}
       </div>
-    </nav>
+    </header>
   );
 }

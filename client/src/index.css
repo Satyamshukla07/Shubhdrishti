@@ -138,6 +138,7 @@
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    min-height: 80px;
   }
 
   .glass-button {
@@ -431,6 +432,23 @@
     
     .section-padding {
       padding: 8rem 0;
+    }
+    
+    .glass-nav {
+      min-height: 90px;
+    }
+  }
+
+  /* Additional responsive fixes */
+  @media (max-width: 640px) {
+    .glass-nav {
+      min-height: 70px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .glass-nav {
+      min-height: 100px;
     }
   }
 }

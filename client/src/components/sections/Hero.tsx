@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section 
       id="home"
-      className="relative min-h-screen flex items-center justify-center parallax-bg"
+      className="relative min-h-screen flex items-center justify-center parallax-bg pt-20 lg:pt-24"
       style={{
         backgroundImage: `url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')`
       }}
